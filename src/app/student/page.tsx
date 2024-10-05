@@ -51,32 +51,8 @@ export default function StudentPage() {
   };
 
   const callEnrollApi = async () => {
-    try {
-      await axios.post(
-        "/api/enrollments",
-        {
-          courseNo,
-        },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-      setCourseNo("");
-      loadMyCourses();
-    } catch (error) {
-      // if (error.response) alert(error.response.data.message);
-      // else alert(error.message);
-
-      if (axios.isAxiosError(error)) {
-        console.log(error.status);
-        console.error(error.response);
-        alert(error.response?.data.message);
-        // Do something with this error...
-      } else {
-        console.error(error);
-        alert(error);
-      }
-    }
+    setCourseNo("");
+    loadMyCourses();
   };
   const callDropApi = async (drop_courseNo: string) => {
     setLoadingDropping(drop_courseNo);
