@@ -63,7 +63,7 @@ export default function StudentPage() {
       );
       setCourseNo("");
       loadMyCourses();
-      console.log(resp);
+      console.log(resp.data);
     } catch (error) {
       // if (error.response) alert(error.response.data.message);
       // else alert(error.message);

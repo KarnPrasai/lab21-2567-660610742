@@ -37,8 +37,8 @@ export default function RootLayout({
         const resp = await axios.get("/api/user/checkAuthen", {
           headers: { Authorization: `Bearer ${token}` },
         });
+        console.log(resp.data);
         $authenStore.set({ token, authenUsername });
-        console.log(resp);
       } catch (err) {
         if (err instanceof Error) {
           console.log(err.message); // Now `err` is of type Error
