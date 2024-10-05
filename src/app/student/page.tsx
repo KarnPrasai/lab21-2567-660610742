@@ -1,6 +1,7 @@
 "use client";
 
 import { $authenStore } from "@lib/authenStore";
+import {Enrollment} from "@lib/types";
 
 import {
   Button,
@@ -17,7 +18,6 @@ import { useStore } from "@nanostores/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Enrollment } from "@lib/types";
 
 export default function StudentPage() {
   const [myEnrollments, setMyEnrollments] = useState<Enrollment[] | null>(null);
@@ -61,9 +61,9 @@ export default function StudentPage() {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
+      console.log(resp);
       setCourseNo("");
       loadMyCourses();
-      console.log(resp.data);
     } catch (error) {
       // if (error.response) alert(error.response.data.message);
       // else alert(error.message);
@@ -79,6 +79,7 @@ export default function StudentPage() {
       }
     }
   };
+
   const callDropApi = async (drop_courseNo: string) => {
     setLoadingDropping(drop_courseNo);
     try {
@@ -88,8 +89,8 @@ export default function StudentPage() {
         },
         headers: { Authorization: `Bearer ${token}` },
       });
+      console.log(resp);
       loadMyCourses();
-      console.log(resp.data);
     } catch (error) {
       if (axios.isAxiosError(error)) {
         console.log(error.status);

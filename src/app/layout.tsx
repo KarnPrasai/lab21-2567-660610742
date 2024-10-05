@@ -5,7 +5,6 @@ import { Container, Group, Loader, Title } from "@mantine/core";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState, useTransition } from "react";
 import Footer from "@components/Footer";
-import axios from "axios";
 
 import { Inter } from "next/font/google";
 import { MantineProvider } from "@mantine/core";
@@ -34,16 +33,15 @@ export default function RootLayout({
     } else {
       //check if token is still valid
       try {
-        const resp = await axios.get("/api/user/checkAuthen", {
+        /*const resp = await axios.get("/api/user/checkAuthen", {
           headers: { Authorization: `Bearer ${token}` },
-        });
-        console.log(resp.data);
+        });*/
         $authenStore.set({ token, authenUsername });
       } catch (err) {
         if (err instanceof Error) {
-          console.log(err.message); // Now `err` is of type Error
+          console.log(err.message);
         } else {
-          console.log("An unexpected error occurred", err);
+          console.log('Unknown error occurred');
         }
         isTokenValid = false;
       }
@@ -85,8 +83,8 @@ export default function RootLayout({
               </Title>
               {children}
               <Footer
-                studentId="660610742"
-                fullName="Karn Prasai"
+                studentId="6660610755"
+                fullName="Natdanai Kamthornkittikul"
                 year="2024"
               />
             </Container>
