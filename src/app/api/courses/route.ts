@@ -7,5 +7,5 @@ export const GET = async () => {
 
   const courses = await prisma.course.findMany();
 
-  return NextResponse.json({ ok: true, courses });
+  return NextResponse.json({ ok: true, courses: courses });
 };
