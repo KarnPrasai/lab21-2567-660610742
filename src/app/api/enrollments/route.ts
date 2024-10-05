@@ -82,7 +82,7 @@ export const POST = async (request: NextRequest) => {
 
   // Coding in lecture
   const prisma = getPrisma();
-  const course = await prisma.course.findMany({
+  const course = await prisma.course.findFirst({
     where: { courseNo: courseNo}
   });
   const enrollments = await prisma.enrollment.findMany({
@@ -90,8 +90,7 @@ export const POST = async (request: NextRequest) => {
     include: { course: true },
   });
   
-  const courseFound = course.find((x) => x.courseNo === courseNo);
-  if(!courseFound)
+  if(!course)
   {
     return NextResponse.json(
       {
@@ -103,8 +102,8 @@ export const POST = async (request: NextRequest) => {
     )
   }
 
-  const enrolled = enrollments.find((x) => x.course.courseNo === courseNo)
-  if(enrolled)
+
+  if(enrollments)
   {
     return NextResponse.json(
       {
