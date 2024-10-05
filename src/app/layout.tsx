@@ -38,12 +38,8 @@ export default function RootLayout({
           headers: { Authorization: `Bearer ${token}` },
         });
         $authenStore.set({ token, authenUsername });
-      } catch (err) {
-        if (err instanceof Error) {
-          console.log(err.message); // Now `err` is of type Error
-        } else {
-          console.log("An unexpected error occurred", err);
-        }
+      } catch (err: any | null) {
+        console.log(err.message);
         isTokenValid = false;
       }
     }
