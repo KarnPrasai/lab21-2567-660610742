@@ -158,7 +158,8 @@ export const DELETE = async (request: NextRequest) => {
       {
         ok: false,
         message: "courseNo must contain 6 characters",
-      },
+      }
+      ,
       { status: 400 }
     );
   }
