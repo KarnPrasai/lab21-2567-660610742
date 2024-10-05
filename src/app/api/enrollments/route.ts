@@ -82,7 +82,9 @@ export const POST = async (request: NextRequest) => {
 
   // Coding in lecture
   const prisma = getPrisma();
-  const course = await prisma.course.findMany();
+  const course = await prisma.course.findMany({
+    where: { courseNo: courseNo}
+  });
   const enrollments = await prisma.enrollment.findMany({
     where: { studentId: studentId },
     include: { course: true },
