@@ -112,7 +112,6 @@ export const POST = async (request: NextRequest) => {
       { status: 400 }
     );
   }
-
   await prisma.enrollment.create({
     data: {
       courseNo: courseNo,
