@@ -1,7 +1,6 @@
 "use client";
 
 import { $authenStore } from "@lib/authenStore";
-import { Course } from "@lib/types";
 
 import {
   Button,
