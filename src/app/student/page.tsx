@@ -18,10 +18,10 @@ import { useStore } from "@nanostores/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Enrollment } from "@prisma/client";
+import { Enrollment } from "@lib/types";
 
 export default function StudentPage() {
-  const [myEnrollments, setMyEnrollments] = useState<Course[] | null>(null);
+  const [myEnrollments, setMyEnrollments] = useState<Enrollment[] | null>(null);
   const [loadingMyEnrollments, setLoadingMyEnrollments] = useState(false);
 
   //const [loadingEnrolling, setLoadingEnrolling] = useState(false);
@@ -79,7 +79,6 @@ export default function StudentPage() {
       }
     }
   };
-
   const callDropApi = async (drop_courseNo: string) => {
     setLoadingDropping(drop_courseNo);
     try {
@@ -118,7 +117,7 @@ export default function StudentPage() {
         <Title order={4}>My Course(s)</Title>
 
         {myEnrollments &&
-          myEnrollments.map((enroll: any|Enrollment) => (
+          myEnrollments.map((enroll: Enrollment) => (
             <Group my="xs" key={enroll.courseNo}>
               <Text>
                 {enroll.courseNo} - {enroll.course.title}

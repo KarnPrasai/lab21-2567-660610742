@@ -23,9 +23,12 @@ export interface Course {
 }
 
 export interface Enrollment {
-  studentId: string;
+  course: Course;
   courseNo: string;
 }
+
+
+
 
 export interface User {
   username: string;
